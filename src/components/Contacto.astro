@@ -1,0 +1,232 @@
+---
+
+---
+
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title" data-i18n="contacto_title">Contáctanos</h2>
+    <p class="section-subtitle" data-i18n="contacto_subtitle">
+      Cuéntanos sobre tu proyecto. Estamos listos para convertir tu visión en realidad.
+    </p>
+    <div class="contacto-grid">
+      <form class="contacto-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre" data-i18n="form_name">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required data-i18n-placeholder="form_name_ph" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="form_email">Email</label>
+            <input type="email" id="email" name="email" required data-i18n-placeholder="form_email_ph" placeholder="tu@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefono" data-i18n="form_phone">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" data-i18n-placeholder="form_phone_ph" placeholder="+1 (305) ..." />
+        </div>
+        <div class="form-group">
+          <label for="servicio" data-i18n="form_service">Tipo de proyecto</label>
+          <select id="servicio" name="servicio">
+            <option value="" data-i18n="form_service_def">Selecciona un servicio</option>
+            <option value="remodelacion" data-i18n="form_srv_remodelacion">Remodelación del Hogar</option>
+            <option value="diseno" data-i18n="form_srv_diseno">Diseño de Interiores</option>
+            <option value="renovacion" data-i18n="form_srv_renovacion">Renovación</option>
+            <option value="comercial" data-i18n="form_srv_comercial">Proyecto Comercial</option>
+            <option value="construccion" data-i18n="form_srv_construccion">Construcción</option>
+            <option value="otro" data-i18n="form_srv_otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje" data-i18n="form_message">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required data-i18n-placeholder="form_message_ph" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span data-i18n="form_submit">Enviar mensaje</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </form>
+      <div class="contacto-info">
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <div>
+            <h4 data-i18n="info_location">Ubicación</h4>
+            <p data-i18n="info_location_val">Miami, Florida, EE.UU.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">📞</span>
+          <div>
+            <h4 data-i18n="info_phone">Teléfono</h4>
+            <p data-i18n="info_phone_val">+1 (305) 555-0123</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">✉️</span>
+          <div>
+            <h4>Email</h4>
+            <p data-i18n="info_email_val">info@kreohabitats.com</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🕐</span>
+          <div>
+            <h4 data-i18n="info_hours">Horario</h4>
+            <p data-i18n="info_hours_val">Lun - Vie: 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const span = btn.querySelector('span');
+    const originalText = span ? span.textContent : 'Enviar mensaje';
+    if (span) span.textContent = i18n.get('form_success');
+    setTimeout(() => {
+      if (span) span.textContent = originalText;
+      form.reset();
+      i18n.switchLang(i18n.currentLang);
+    }, 3000);
+  });
+</script>
+
+<style>
+  .contacto {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+  }
+
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    align-items: flex-start;
+  }
+
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--bg-card);
+    padding: 36px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color var(--transition);
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23777' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color var(--transition);
+  }
+
+  .info-card:hover {
+    border-color: var(--gold);
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .info-card h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .info-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .contacto-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contacto-form {
+      padding: 24px;
+    }
+  }
+</style>

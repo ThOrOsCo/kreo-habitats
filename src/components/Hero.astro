@@ -1,0 +1,171 @@
+---
+
+---
+
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80" alt="Interior moderno" class="hero-image" loading="eager" />
+  <div class="hero-bg"></div>
+  <div class="hero-content container">
+    <div class="hero-badge" data-i18n="hero_badge">Miami, FL — Transformando espacios desde 2018</div>
+    <h1 class="hero-title">
+      <span data-i18n="hero_title_1">Transformamos</span> <span class="gold-text" data-i18n="hero_title_2">tu espacio</span><br />
+      <span data-i18n="hero_title_3">en el hogar que mereces</span>
+    </h1>
+    <p class="hero-description" data-i18n="hero_desc">
+      Remodelaciones, diseño de interiores y construcción. Creamos entornos que inspiran, donde la funcionalidad se encuentra con la estética.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span data-i18n="btn_quote">Solicita tu cotización</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#galeria" class="btn-outline" data-i18n="btn_projects">Ver proyectos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">150+</span>
+        <span class="stat-label" data-i18n="stat_projects">Proyectos completados</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">98%</span>
+        <span class="stat-label" data-i18n="stat_satisfaction">Clientes satisfechos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">5+</span>
+        <span class="stat-label" data-i18n="stat_experience">Años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) saturate(0.8);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 3px
+      );
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 120px 20px 80px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .gold-text {
+    color: var(--gold);
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+const testimonios = [
+  {
+    nombre: 'María García',
+    ubicacion: 'Coral Gables, FL',
+    keyTexto: 't1_text',
+    texto: 'KREO transformó completamente nuestra cocina. El resultado superó todas nuestras expectativas. Profesionalismo y calidad excepcional.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
+  },
+  {
+    nombre: 'Robert Johnson',
+    ubicacion: 'Brickell, Miami',
+    keyTexto: 't2_text',
+    texto: 'Increíble trabajo en el diseño de nuestra oficina. El equipo entendió exactamente lo que necesitábamos y lo ejecutó a la perfección.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+  },
+  {
+    nombre: 'Ana Martínez',
+    ubicacion: 'Doral, FL',
+    keyTexto: 't3_text',
+    texto: 'Contratamos a KREO para la renovación total de nuestra casa. Cada detalle fue cuidado al máximo. Totalmente recomendados.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80',
+  },
+];
+---
+
+<section class="testimonios" id="testimonios">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title" data-i18n="testimonios_title">Lo que dicen nuestros clientes</h2>
+    <p class="section-subtitle" data-i18n="testimonios_subtitle">
+      La satisfacción de nuestros clientes es nuestra mejor carta de presentación.
+    </p>
+    <div class="testimonios-grid">
+      {testimonios.map((t) => (
+        <div class="testimonio-card">
+          <div class="testimonio-stars">
+            {Array.from({ length: t.rating }, (_, i) => (
+              <span key={i} class="star">★</span>
+            ))}
+          </div>
+          <p class="testimonio-texto" data-i18n={t.keyTexto}>"{t.texto}"</p>
+          <div class="testimonio-autor">
+            <div class="testimonio-avatar">
+              <img src={t.avatar} alt={t.nombre} class="testimonio-foto" loading="lazy" />
+            </div>
+            <div>
+              <p class="testimonio-nombre">{t.nombre}</p>
+              <p class="testimonio-ubicacion">{t.ubicacion}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios {
+    padding: var(--section-padding);
+    background: var(--bg-primary);
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testimonio-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .testimonio-stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .star {
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  .testimonio-texto {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .testimonio-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--gold);
+  }
+
+  .testimonio-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonio-nombre {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .testimonio-ubicacion {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .testimonios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+
+const langs = [
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+  { code: 'pt', label: 'PT' },
+  { code: 'ru', label: 'RU' },
+];
+---
+
+<div class="lang-wrapper">
+  <button class="lang-current" id="langSwitcher" aria-label="Cambiar idioma">
+    ES
+    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+      <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="lang-dropdown">
+    {langs.map((l) => (
+      <button
+        class="lang-btn"
+        data-lang={l.code}
+        onclick={`i18n.switchLang('${l.code}')`}
+      >
+        {l.label}
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .lang-wrapper {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .lang-current {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: 1px;
+  }
+
+  .lang-current:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .lang-wrapper:hover .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: all 0.2s ease;
+    z-index: 100;
+    min-width: 100%;
+  }
+
+  .lang-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition);
+    letter-spacing: 1px;
+  }
+
+  .lang-btn:hover {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--gold);
+  }
+
+  .lang-btn.active {
+    color: var(--gold);
+    background: rgba(201, 168, 76, 0.08);
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+const servicios = [
+  { keyTitle: 's1_title', keyDesc: 's1_desc', title: 'Remodelaciones del Hogar', desc: 'Transformamos cocinas, baños, salas y habitaciones con acabados de lujo y funcionalidad moderna.', icon: '🏠' },
+  { keyTitle: 's2_title', keyDesc: 's2_desc', title: 'Diseño de Interiores', desc: 'Creamos ambientes únicos que reflejan tu personalidad, combinando estética y confort.', icon: '✨' },
+  { keyTitle: 's3_title', keyDesc: 's3_desc', title: 'Renovaciones', desc: 'Actualizamos espacios existentes con nuevas tecnologías, materiales sostenibles y diseño contemporáneo.', icon: '🔄' },
+  { keyTitle: 's4_title', keyDesc: 's4_desc', title: 'Proyectos Comerciales', desc: 'Desarrollamos espacios comerciales funcionales y atractivos para tu negocio.', icon: '🏢' },
+  { keyTitle: 's5_title', keyDesc: 's5_desc', title: 'Construcción', desc: 'Ejecutamos proyectos de construcción llave en mano con los más altos estándares de calidad.', icon: '🔨' },
+  { keyTitle: 's6_title', keyDesc: 's6_desc', title: 'Diseño Exterior', desc: 'Creamos espacios al aire libre que extienden tu hogar, desde terrazas hasta jardines.', icon: '🌿' },
+];
+---
+
+<section class="servicios" id="servicios">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title" data-i18n="servicios_title">Nuestros Servicios</h2>
+    <p class="section-subtitle" data-i18n="servicios_subtitle">
+      Ofrecemos soluciones integrales para transformar cualquier espacio en un lugar extraordinario.
+    </p>
+    <div class="servicios-grid">
+      {servicios.map((s) => (
+        <div class="servicio-card">
+          <span class="servicio-icon">{s.icon}</span>
+          <h3 class="servicio-title" data-i18n={s.keyTitle}>{s.title}</h3>
+          <p class="servicio-desc" data-i18n={s.keyDesc}>{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicios {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .servicio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 28px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .servicio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .servicio-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .servicio-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .servicio-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .servicio-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .servicio-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 1024px) {
+    .servicios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
