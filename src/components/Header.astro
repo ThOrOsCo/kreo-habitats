@@ -13,11 +13,7 @@ const navItems = [
 <header class="header">
   <nav class="nav container">
     <a href="#hero" class="logo">
-      <span class="logo-icon">✦</span>
-      <div class="logo-text">
-        <span class="logo-name">KREO</span>
-        <span class="logo-surname">Habitats</span>
-      </div>
+      <img src="/images/kreohabitats2.png" alt="KREO Habitats" class="logo-img" />
     </a>
     <div class="nav-links">
       {navItems.map((item) => (
@@ -98,30 +94,10 @@ const navItems = [
     gap: 10px;
   }
 
-  .logo-icon {
-    font-size: 1.5rem;
-    color: var(--gold);
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .logo-name {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 2px;
-  }
-
-  .logo-surname {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
   }
 
   .nav-links {
